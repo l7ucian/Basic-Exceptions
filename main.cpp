@@ -2,21 +2,36 @@
 
 using namespace std;
 
+
 void mightGoWrong(){
-bool error = true;
-if(error)
+bool error1 = false;
+bool error2 = true;
+if(error1)
 {
-    throw 8;
+    throw "Something went wrong";
 }
+if(error2){
+    throw string("Something else went wrong.");
+}
+}
+void usesMightGoWrong(){
+mightGoWrong();
 }
 int main()
 {
     try{
-    mightGoWrong();
+    usesMightGoWrong();
     }
-    catch(int e){
+    catch(int e)
+    {
     cout<<"Error code: "<<e<<endl;
     }
+    catch(char const * e)
+    {
+    cout<<"Error message: "<<e<<endl;
+    }
+    catch(string &e){
+    cout<<"string error message: "<<e<<endl;}
     cout<<"Still running"<<endl;
     return 0;
 }
